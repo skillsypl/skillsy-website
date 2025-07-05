@@ -80,43 +80,8 @@ window.addEventListener('scroll', () => {
 });
 
 // ===== Form Handling =====
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Get submit button
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.textContent;
-        
-        // Show loading state
-        submitButton.textContent = 'Wysyłanie...';
-        submitButton.disabled = true;
-        
-        // Simulate form submission (replace with actual endpoint)
-        try {
-            // In production, replace this with actual form submission
-            // await fetch('your-endpoint', { method: 'POST', body: formData });
-            
-            // Simulate delay
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            // Success message
-            showNotification('Wiadomość została wysłana! Odezwę się najszybciej jak to możliwe.', 'success');
-            contactForm.reset();
-        } catch (error) {
-            // Error message
-            showNotification('Wystąpił błąd. Proszę spróbować ponownie lub zadzwonić bezpośrednio.', 'error');
-        } finally {
-            // Reset button
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }
-    });
-}
+// Formularz teraz używa Formspree, więc usuwamy symulację
+// Możesz dodać tutaj dodatkową walidację jeśli potrzebujesz
 
 // ===== Notification System =====
 function showNotification(message, type = 'info') {
